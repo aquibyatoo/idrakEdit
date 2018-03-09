@@ -3,14 +3,14 @@
 $(document).ready(function() {
     console.log("its ready dom..");
 
-    $('.preview-btn').click(function() {  
+    $('.preview-btn').click(function() {
         $('.show-file').click();
     });
 
     $('.book-btn').click(function() {
         $('.upload-book').click();
     });
-   
+
 
     if ($(".free-book").is(":checked")) {
         //console.log('its done');
@@ -23,7 +23,7 @@ $(document).ready(function() {
      $('.free-book').change(function() {
         $('#price').prop('disabled', true);
     });
-     
+
 
     $('#configure').submit(function(event) {
         var count = 0;
@@ -41,16 +41,16 @@ $(document).ready(function() {
             swal("Input fields are empty", {
                 buttons: ["Continue to fill", true],
               });
-            //   event.preventDefault();
+              event.preventDefault();
               return true;
         }
-        
-        
+
+
         if ($(".paid-book").is(":checked")) {
             let temp = $(".price-option").val();
             if(temp === ""){
                 swal("Fill the price option!");
-                // event.preventDefault();
+                event.preventDefault();
                 return true;
             }
             console.log('its for price option');

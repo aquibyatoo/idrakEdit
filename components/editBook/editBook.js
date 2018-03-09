@@ -2,26 +2,13 @@
 
 $(document).ready(function() {
 
-    $('.preview-btn').click(function() {  // this code is for performing click on hidden browse buttons....
+    $('.preview-btn').click(function() {
         $('.show-file').click();
     });
 
-    // code for book upload.....
     $('.book-btn').click(function() {
         $('.upload-book').click();
     });
-   
-
-    // CODE FOR RADIO BUTTON/......toggle effects with price option...
-    // $(".paid-book").change(function() {
-    //     if($(".free-book").prop("checked", true)) {
-    //         $(".free-book").prop("checked", false);
-    //     }
-
-    //     if($(".free-book").prop("checked", false)) {
-    //         $(".free-book").prop("checked", true);
-    //     }
-    // })
 
      $('.paid-book').change(function() {
          $('#price').prop('disabled', false);
@@ -30,10 +17,8 @@ $(document).ready(function() {
      $('.free-book').change(function() {
         $('#price').prop('disabled', true);
     });
-     
 
-    // CODE FOR SUBMIT BUTTON////.......
-    $('.add-form').submit(function() {
+    $('.add-form').submit(function(event) {
         var count = 0;
         var flag = 0;
         $('.req').each(function(index, element) {
@@ -50,17 +35,15 @@ $(document).ready(function() {
                 buttons: ["Continue to fill", true],
               });
               event.preventDefault();
-              return true
+              return true;
         }
-        
-        
-        // this is for checkbox and price......
+
         if ($(".paid-book").is(":checked")) {
             let temp = $(".price-option").val();
             if(temp === ""){
                 swal("Fill the price option!");
                 event.preventDefault();
-                return true
+                return true;
             }
             console.log('its for price option');
             console.log(temp);
@@ -68,6 +51,3 @@ $(document).ready(function() {
     });
 
 });
-
-
-//reset is pending/.....

@@ -92,18 +92,17 @@
 
                             <div class="from__item">
                                 <label class="from__label-inner" for="type">Type</label>
-                                <select class="option-list req" id="type" name="type">
-                                    <option>Text</option>
-                                    <option>Audio</option>
-
+                                <select class="option-list req" id="type" name="bookType">
+                                    <option value="text">Text</option>
+                                    <option value="audio">Audio</option>
                                 </select>
                             </div>
 
                             <div class="radio-box">
                                 <div>
-                                    <input type="radio" name="free" value="Free Book" class="free-book" checked>Free Book</div>
+                                    <input type="radio" name="free" value="free" class="free-book" checked>Free Book</div>
                                 <div>
-                                    <input type="radio" name="free" value="Paid Book" class="paid-book">Paid Book</div>
+                                    <input type="radio" name="free" value="paid" class="paid-book">Paid Book</div>
                             </div>
                         </div>
 
@@ -119,15 +118,15 @@
                         </div>
                         <label for="image-upload" id="image-label"></label>
                         <input type="file" name="cover" class="show-file req" id="image-upload" accept=".png, .jpg, .jpeg" onchange="checkPhoto(this.files[0])"
-                            required></input>
-                        <button class="upload-button preview-btn">Browse</button>
+                            ></input>
+                        <button type="button" class="upload-button preview-btn">Browse</button>
                     </div>
 
                     <div class="upload-box">
                         <div class="upload-title">Upload Book</div>
-                        <button class="upload-button book-btn">Browse</button>
+                        <button type="button" class="upload-button book-btn">Browse</button>
                         <input type="file" name="book" class="upload-book req" accept=".doc, .docx,.ppt, .pptx,.txt,.pdf, audio/*" onchange="checkBook(this.files[0])"
-                            required></input>
+                            ></input>
                     </div>
 
                     <div class="hr-line"></div>
@@ -139,7 +138,7 @@
 
                     <div class="from__item">
                         <label class="from__label" for="publish">Published</label>
-                        <input type="text" name="published" class="published-option req" id="publish" placeholder="Euros">
+                        <input type="date" name="published" class="published-option req" id="publish" placeholder="Euros">
                     </div>
 
 
@@ -167,7 +166,7 @@
     <script src="imagePreview.js"></script>
     <script src="add-book.js"></script>
     <script>
-        function checkPhoto(target) {   
+        function checkPhoto(target) {
             if (target.value === "") {
                 swal("Something went wrong. Please try again!");
             }
@@ -178,7 +177,7 @@
             $("prev-image").addClass('prev-image-show');
         };
 
-        function checkBook(target) {   
+        function checkBook(target) {
             if (target.value === "") {
                 swal("Something went wrong. Please try again!");
             }
@@ -190,12 +189,12 @@
 
 
         $.uploadPreview({
-            input_field: "#image-upload",  
-            preview_box: "#image-preview",  
-            label_field: "#image-label",   
-            label_default: "Choose File",   
-            label_selected: "Change File",  
-            no_label: false                
+            input_field: "#image-upload",
+            preview_box: "#image-preview",
+            label_field: "#image-label",
+            label_default: "Choose File",
+            label_selected: "Change File",
+            no_label: false
         });
 
     </script>

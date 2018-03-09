@@ -50,116 +50,113 @@
         </div>
         <div class="section-main">
             <header class="header">
-                <div class="header__caption">Add new book</div>
+                <div class="header__caption">Edit {book.title}</div>
             </header>
 
             <div class="from-wrapper">
-                <form id="configure" class="from add-form" method="post" enctype="multipart/form-data" action="/admin/edit"  name="myForm">
-                    {#book}
-                    <input hidden value="{_id}" placeholder="Book ID" type="text" name="id" id="id" />
-                    <input hidden value="{bookPath}" placeholder="BookPath" type="text" name="bookPath" id="bookPath" />
-                    <input hidden value="{coverPath}" placeholder="CoverPath" type="text" name="coverPath" id="coverPath" />
-                    <div class="from__item">
-                        <label class="from__label" for="title">Title</label>
-                        <input type="text" value="{title}" name="title" class="from__title req" id="title" placeholder="Enter Book Title" autofocus>
-                    </div>
+              <form id="configure" class="from add-form" method="post" enctype="multipart/form-data" action="/admin/edit" name="myForm">
+                          {#book}
+                          <input hidden="" value="{_id}" placeholder="Book ID" type="text" name="id" id="id">
+                          <input hidden="" value="{bookPath}" placeholder="BookPath" type="text" name="bookPath" id="bookPath">
+                          <input hidden="" value="{coverPath}" placeholder="CoverPath" type="text" name="coverPath" id="coverPath">
+                          <div class="from__item">
+                              <label class="from__label" for="title">Title</label>
+                              <input type="text" value="{title}" name="title" class="from__title req" id="title" placeholder="Enter Book Title" autofocus="">
+                          </div>
 
-                    <div class="from__item">
-                        <label class="from__label" for="author">Author</label>
-                        <input type="text" value="{author}" name="author" class="from__title req" id="author" placeholder="Enter Book Author">
-                    </div>
+                          <div class="from__item">
+                              <label class="from__label" for="author">Author</label>
+                              <input type="text" value="{author}" name="author" class="from__title req" id="author" placeholder="Enter Book Author">
+                          </div>
 
-                    <div class="inner-wrapper">
-                        <div class="inner-wrapper-items">
+                          <div class="inner-wrapper">
+                              <div class="inner-wrapper-items">
 
-                            <div class="from__item">
-                                <label class="from__label-inner" for="language">Language</label>
-                                <select class="option-list req" id="language" name="language">
-                                    {#languages}
-                                    <option value="{id}" {@eq key=id value="{book.language}" }selected{/eq}>{name}</option>
-                                    {/languages}
-                                </select>
-                            </div>
+                                  <div class="from__item">
+                                      <label class="from__label-inner" for="language">Language</label>
+                                      <select class="option-list req" id="language" name="language">
+                                          {#languages}
+                                          <option value="{id}" {@eq key=id value="{book.language}" }selected{/eq}>{name}</option>
+                                          {/languages}
+                                      </select>
+                                  </div>
 
-                            <div class="from__item">
-                                <label class="from__label-inner" for="Category">Category</label>
-                                <select class="option-list req" id="Category" name="category">
-                                    {#categories}
-                                    <option value="{id}" {@eq key=id value="{book.category}" }selected{/eq}>{title}</option>
-                                    {/categories}
-                                </select>
-                            </div>
+                                  <div class="from__item">
+                                      <label class="from__label-inner" for="Category">Category</label>
+                                      <select class="option-list req" id="Category" name="category">
+                                          {#categories}
+                                          <option value="{id}" {@eq key=id value="{book.category}" }selected{/eq}>{title}</option>
+                                          {/categories}
+                                      </select>
+                                  </div>
 
-                            <div class="from__item">
-                                <label class="from__label-inner" for="title">Edition</label>
-                                <input type="text" value="{edition}" name="edition" class="option-list-edition req" id="title" placeholder="Edition">
-                            </div>
+                                  <div class="from__item">
+                                      <label class="from__label-inner" for="title">Edition</label>
+                                      <input type="text" value="{edition}" name="edition" class="option-list-edition req" id="title" placeholder="Edition">
+                                  </div>
 
-                            <div class="from__item">
-                                <label class="from__label-inner" for="type">Type</label>
-                                <select class="option-list req" id="type" name="type">
-                                    <option>Text</option>
-                                    <option>Audio</option>
+                                  <div class="from__item">
+                                      <label class="from__label-inner" for="type">Type</label>
+                                      <select class="option-list req" id="type" name="bookType">
+                                        <option value="text"  {@eq key=bookType value="text" }selected{/eq}>Text</option>
+                                        <option value="audio" {@eq key=bookType value="audio" }selected{/eq}>Audio</option>
 
-                                </select>
-                            </div>
+                                      </select>
+                                  </div>
 
-                            <div class="radio-box">
-                                <div>
-                                    <input type="radio" name="free" value="Free" class="free-book" checked>Free Book</div>
-                                <div>
-                                    <input type="radio" name="free" value="Free" class="paid-book">Paid Book</div>
-                            </div>
-                        </div>
+                                  <div class="radio-box">
+                                      <div>
+                                        <input type="radio" name="free" value="free" class="free-book" {@eq key=free value="true" type="boolean" }checked{/eq}>Free Book</div>
+                                      <div>
+                                        <input type="radio" name="free" value="paid" class="paid-book" {@eq key=free value="false" type="boolean" }checked{/eq}>Paid Book</div>
+                                  </div>
+                              </div>
 
-                        <div class="perview-box" id="image-preview">
-                            <img src="#" alt="preview photo" class="prev-image" />
-                        </div>
-                    </div>
+                              <div class="perview-box" id="image-preview">
+                                  <img src="#" alt="preview photo" class="prev-image">
+                              </div>
+                          </div>
 
-                    <div class="upload-box">
-                        <div class="upload-title">
-                            <div class="caption">Upload Cover</div>
-                            <div class="caption-next">Max size 500KB</div>
-                        </div>
-                        <label for="image-upload" id="image-label"></label>
-                        <input type="file" name="cover" class="show-file" id="image-upload" accept=".png, .jpg, .jpeg" onchange="checkPhoto(this.files[0])"
-                            required></input>
-                        <button class="upload-button preview-btn">Browse</button>
-                    </div>
+                          <div class="upload-box">
+                              <div class="upload-title">
+                                  <div class="caption">Upload Cover</div>
+                                  <div class="caption-next">Max size 500KB</div>
+                              </div>
+                              <label for="image-upload" id="image-label"></label>
+                              <input type="file" name="cover" class="show-file" id="image-upload" accept=".png, .jpg, .jpeg" onchange="checkPhoto(this.files[0])">
+                              <button type="button" class="upload-button preview-btn">Browse</button>
+                          </div>
 
-                    <div class="upload-box">
-                        <div class="upload-title">Upload Book</div>
-                        <button class="upload-button book-btn">Browse</button>
-                        <input type="file" name="book" class="upload-book" accept=".doc, .docx,.ppt, .pptx,.txt,.pdf, audio/*" onchange="checkBook(this.files[0])"
-                            required></input>
-                    </div>
+                          <div class="upload-box">
+                              <div class="upload-title">Upload Book</div>
+                              <button type="button" class="upload-button book-btn">Browse</button>
+                              <input type="file" name="book" class="upload-book" accept=".doc, .docx,.ppt, .pptx,.txt,.pdf, audio/*" onchange="checkBook(this.files[0])">
+                          </div>
 
-                    <div class="hr-line"></div>
+                          <div class="hr-line"></div>
 
-                    <div class="from__item margin">
-                        <label class="from__label" for="price">Price</label>
-                        <input type="text" name="price" class="price-option" id="price" placeholder="Euros" disabled>
-                    </div>
+                          <div class="from__item margin">
+                              <label class="from__label" for="price">Price</label>
+                              <input type="text" name="price" value="{price}" class="price-option" id="price" placeholder="Euros" disabled="">
+                          </div>
 
-                    <div class="from__item">
-                        <label class="from__label" for="publish">Published</label>
-                        <input type="text" name="published" value="{published}" class="published-option req" id="publish" placeholder="Euros">
-                    </div>
+                          <div class="from__item">
+                              <label class="from__label" for="publish">Published</label>
+                              <input type="text" name="published" value="{published}" class="published-option req" id="publish" placeholder="Euros">
+                          </div>
 
 
-                    <label class="description" for="description">Description</label>
-                    <div class="description__box">
-                        <textarea style=margin-left:146px;margin-top:-34px; name="description" class="description__area" id="description" rows="15"></textarea>
-                    </div>
+                          <label class="description" for="description">Description</label>
+                          <div class="description__box">
+                              <textarea value="{description}" style="margin-left:146px;margin-top:-34px;" name="description" class="description__area" id="description" rows="15"></textarea>
+                          </div>
 
-                    <div class="save-btn">
-                        <button type="submit" class="upload-button">Save</button>
-                        <button type="button" class="cancel-button"><a href="/admin">Cancel</a></button>
-                    </div>
-                    <!-- <input type="button" value="Reset Form" onClick="this.form.reset()" /> -->
-                    {/book}
-                </form>
+                          <div class="save-btn">
+                              <button type="submit" class="upload-button">Save</button>
+                              <button type="button" class="cancel-button"><a href="/admin">Cancel</a></button>
+                          </div>
+                          {/book}
+                      </form>
             </div>
         </div>
     </div>
@@ -172,13 +169,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://raw.githubusercontent.com/andrewplummer/Sugar/2.0.4/dist/sugar.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src='previewImage.js'></script>
     <script src="editBook.js"></script>
     <script>
-        // it is here bcox i got errors while putting this code it the js file.....
-        function checkPhoto(target) {   //its for uploading cover image
+        function checkPhoto(target) {
             if (target.value === "") {
                 swal("Something went wrong. Please try again!");
             }
@@ -189,8 +183,7 @@
             $("prev-image").addClass('prev-image-show');
         };
 
-        // for uploading text book...
-        function checkBook(target) {   //its for uploading cover image
+        function checkBook(target) {
             if (target.value === "") {
                 swal("Something went wrong. Please try again!");
             }
@@ -202,18 +195,13 @@
 
 
         $.uploadPreview({
-            input_field: "#image-upload",   // Default: .image-upload
-            preview_box: "#image-preview",  // Default: .image-preview
-            label_field: "#image-label",    // Default: .image-label
-            label_default: "Choose File",   // Default: Choose File
-            label_selected: "Change File",  // Default: Change File
-            no_label: false                 // Default: false
+            input_field: "#image-upload",
+            preview_box: "#image-preview",
+            label_field: "#image-label",
+            label_default: "Choose File",
+            label_selected: "Change File",
+            no_label: false
         });
-
-              //$('#configure').click(function() {  reset is working but .... after working on submit...
-                  //console.log('clicked form.....');
-                  //$('#configure')[0].reset();
-              //})
 
     </script>
 </body>
