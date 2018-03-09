@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../../css/style.scss">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="side-nav-wrapper">
+            <div class="logo-box">
+                <img src="../../img/logo.png" alt="logo image" class="logo-image">
+            </div>
+            <div class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Add new books</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Categories</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">add new category</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">types</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">add new type</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Purchases</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-main">
+            <header class="header">
+                <div class="header__caption">Add New Category</div>
+            </header>
+
+            <div class="category-warpper">
+                <form action="" method="">
+                    <div class="input-category-outer">
+                        <div class="category-title">Category name</div>
+                        <input type="text" class="category-input" id="category-input" autofocus>
+                        <button type="button" class="button category-button">Save Category</button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-wrapper">
+                <table id="datatable" class="ui celled table">
+                    <thead>
+                    <tr class="category-row">
+                        <th>Category Name</th>
+                        <th>Book Count</th>
+                        <th></th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="table">
+                    {#categories}
+                    <tr id="{id}">
+                        <td>{title}</td>
+                        <td>12</td>
+                        <td>
+                            <button type="button" onclick="del('{id}')" class="button">Delete</button>
+                        </td>
+                    </tr>
+                    {/categories}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" 
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="category.js"></script>
+    <script>
+        // triggered when delete button is clicked..
+    function del(id) {
+        
+            
+                console.log(id);
+
+                axios.post('http://localhost:3000/admin' + '/categories/delete', {
+                    id: id
+
+                })
+                    .then(function (response) {
+                        console.log(response);
+
+                        if (response.data.Response === "OK" && response.status === 200) {
+
+
+                            var parent = document.getElementById("table");
+                            var child = document.getElementById(id);
+                            parent.removeChild(child);
+                            document.getElementById("category-input").value = "";
+                     
+                            swal("Deleted!", "Your category has been deleted.", "success");
+                        }
+
+                    }).catch(function (error) {
+                    console.log(error);
+                    sweetAlert("Oops...", "Something went wrong!" + '\n' +
+                        "Please check your Network Settings", "error");
+
+                });
+
+            
+
+    }
+
+    </script>
+</body>
+
+</html>

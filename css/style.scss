@@ -1,0 +1,434 @@
+body {
+    
+    box-sizing: border-box;
+    margin: 0;
+
+    background-color: #fff;
+}
+
+html {
+    font-size: 62.5%;  //remember.....
+}
+
+
+//Global for button
+button {
+    transition: all .2s;
+
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 .5rem .5rem rgba(63, 136, 231, 0.541);
+    }
+
+    &:active {
+        transform: translateY(.3rem);
+        box-shadow: 0 .3rem .5rem rgba(63, 136, 231, 0.281);
+    }
+}
+
+.main-wrapper {
+    display: flex;
+
+    font-size: 1.6rem;
+
+    overflow: hidden;
+}
+
+
+/* ====   navigation ==== */
+.side-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    padding: 4rem 3.5rem;
+    background-color: #1989e8;
+}
+
+.logo-box {
+    display: flex;
+    justify-content: center;
+    width: 14rem;
+    height: 11.5rem;
+    margin: 0 auto;
+}
+
+.logo-image {
+    width: 100%;
+    display: block;
+}
+
+.nav {
+    margin-top: 4rem;
+
+    &__list {
+        list-style: none;
+        padding-left: 0 !important;
+    }
+
+    &__item {
+        //list-style: none;
+        padding: 1.5rem 1.5rem;
+        transition: all 0.2s;
+        border-radius: .4rem;
+
+        &:hover {
+            background-color: rgb(7, 109, 168);
+            transform: translateX(1rem);
+        }
+    }
+
+    &__link {
+        transition: all 0.2s;
+
+        &:link,
+        &:visited {
+            display: block;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            outline: none;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+    }
+
+}
+
+/* ====   MAIN BODY ==== */
+.section-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    margin: 5rem 6rem;
+    background-color: #fff;
+    border-radius: .6rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.466);
+}
+
+.inner-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5.3rem;
+
+    &-items {
+        display: flex;
+        flex-direction: column;
+        flex: 0.6;
+    }
+}
+
+
+
+.header {
+    font-size: 2rem;
+    padding: 3rem 4rem 2rem 6rem;
+    border-bottom: 1px solid #ccc;
+    //box-shadow: 0 .2rem .8rem rgba(0, 0, 0, 0.205);
+}
+
+.from-wrapper {
+    margin: 2.5rem 0;
+    padding: 5rem 4rem 2rem 6rem;
+}
+
+.from {
+
+    &__item {
+        padding: 2rem 0;
+    }
+
+    &__title {
+        width: 72%;
+        background: rgba(204, 204, 204, 0.171);
+        border: 1px solid #ccc;
+        border-radius: .4rem;
+        padding: .5rem 1rem;
+    }
+
+    &__label {
+        display: inline-block;
+        width: 18%;
+
+        &-inner {
+            display: inline-block;
+             width: 46%;     
+        }
+    }
+}
+
+.option-list {
+    width: 50%;
+}
+
+.option-list-edition {
+    width: 44%;
+
+    background: rgba(204, 204, 204, 0.171);
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    padding: .5rem 1rem;
+}
+
+.perview-box {
+    margin: 2rem 0;
+    width: 30%;
+    height: 30rem;
+    background: #fff;
+    display: block;
+    
+}
+
+.radio-box {
+    margin: 2rem 0;
+    display: flex;
+    & > div {
+        margin-right: 2.5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.upload-box {
+    margin-top: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.caption-next {
+    font-size: 1.2rem;
+    color: #999;
+    padding: 0 .5rem;
+}
+
+.upload-button {
+    padding: 1rem 4rem;
+    color: #fff;
+    background: rgb(63, 136, 231);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 .3rem .5rem rgba(63, 136, 231, 0.384);
+    text-decoration: none;
+
+    &:active {
+        outline: none;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+
+// for dotted border when focus....for firefox.//
+button::-moz-focus-inner {
+    border: 0;
+  }
+  
+  
+
+.upload-title {
+    width: 19%;
+}
+
+.hr-line {
+    margin-top: 4rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.price-option {
+    width: 18%;
+    background: rgba(204, 204, 204, 0.171);
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    padding: .5rem 1rem;   
+}
+
+.published-option {
+    width: 18%;
+    background: rgba(204, 204, 204, 0.171);
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    padding: .5rem 1rem;   
+}
+
+.margin {
+    margin-top: 6rem;
+}
+
+.save-btn {
+    display: block;
+    text-align: end;
+    margin: 5rem 7rem 0 0 ;
+}
+
+.description {
+    width: 18%;
+    //vertical-align: text-top;
+    display: inline-block;
+    
+
+    &__box {
+        padding: 2rem 0;
+    }
+
+    &__area {
+        width: 65%;
+        background: rgba(204, 204, 204, 0.171);
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    }
+}
+
+.show-file {
+    display: none;
+}
+
+.prev-image {
+    width: 100%;
+    transition: all .5s;
+    transform: translateX(20rem);
+    visibility: hidden;
+    opacity: 0;
+    display: block;
+}
+
+.prev-image-show {
+    transition: all .2s;
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.upload-book {
+    display: none;
+}
+
+
+// ==============================
+// =====  code of book list  
+
+.table-wrapper {
+    margin: 8rem 3rem;
+}
+
+.edit-button a{
+    color: #fff;
+    text-decoration: none;
+}
+
+
+// ==============================
+// =====  code of category.html.......
+
+.input-category-outer {
+    padding: 5rem 3rem 2rem 3rem;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.category-title {
+    font-size: 1.8rem;
+    color: #333;
+    width: 25%;
+    margin-right: 2rem;
+}
+
+.button {
+    padding: 1rem 4rem;
+    color: #fff;
+    background: rgb(63, 136, 231);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 .3rem .5rem rgba(63, 136, 231, 0.384);
+    text-align: center;
+}
+
+.category-input {
+    padding: .8rem 2rem;
+    background-color: rgb(235, 235, 235);
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+}
+
+.del-button {
+   // width: 2.5rem;
+    text-align: center;
+
+    & a {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.category-row > th {
+    width: 15rem;
+}
+
+
+//======================
+//    ==  type.html    
+
+.type {
+    display: flex;
+    align-items: center;
+
+    &__title {
+        font-size: 1.8rem;
+        margin-right: 10rem;
+    }
+
+    &__input {
+        padding: .8rem 1rem;
+        border: 1px solid #ccc;
+        background: rgba(204, 204, 204, 0.226);
+        border-radius: .4rem;
+        margin-right: 1rem;
+    }
+
+    &__button {
+    
+        &-del {
+            width: 5rem;
+            margin-left: 5rem;
+            
+            & a {
+                color: #fff;
+                text-decoration: none;
+            }
+    
+        }
+    }
+}
+
+
+
+
+//============  Edit BOOK css..=======
+
+//===================================
+
+.disable-cursor > li a {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.cancel-button {
+    padding: .9rem 2rem;
+    border: 1px solid transparent;
+    background: rgb(105, 168, 228);
+    border-radius: .4rem;
+    margin-left: 1rem;
+
+    & a {
+        color: rgb(151, 41, 41);
+        text-decoration: none;
+    }
+}

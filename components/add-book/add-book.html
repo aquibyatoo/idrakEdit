@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">-->
+    <link rel="stylesheet" href="../../css/style.scss">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="side-nav-wrapper">
+            <div class="logo-box">
+                <img src="../../img/logo.png" alt="logo image" class="logo-image">
+            </div>
+            <div class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Books</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">Add new books</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Categories</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">add new category</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">types</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">add new type</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Purchases</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-main">
+            <header class="header">
+                <div class="header__caption">Add new book</div>
+            </header>
+
+            <div class="from-wrapper">
+                <form id="configure" class="from add-form" method="post" enctype="multipart/form-data" action="/admin/create">
+                    <div class="from__item">
+                        <label class="from__label" for="title">Title</label>
+                        <input type="text" name="title" class="from__title req" id="title" placeholder="Enter Book Title" autofocus>
+                    </div>
+
+                    <div class="from__item">
+                        <label class="from__label" for="author">Author</label>
+                        <input type="text" name="author" class="from__title req" id="author" placeholder="Enter Book Author">
+                    </div>
+
+                    <div class="inner-wrapper">
+                        <div class="inner-wrapper-items">
+
+                            <div class="from__item">
+                                <label class="from__label-inner" for="language">Language</label>
+                                <select class="option-list req" id="language" name="language">
+                                    {#languages}
+                                    <option value="{id}">{name}</option>
+                                    {/languages}
+                                </select>
+                            </div>
+
+                            <div class="from__item">
+                                <label class="from__label-inner" for="Category">Category</label>
+                                <select class="option-list req" id="Category" name="category">
+                                    {#categories}
+                                    <option value="{id}">{title}</option>
+                                    {/categories}
+                                </select>
+                            </div>
+
+                            <div class="from__item">
+                                <label class="from__label-inner" for="title">Edition</label>
+                                <input type="text" name="edition" class="option-list-edition req" id="title" placeholder="Edition">
+                            </div>
+
+                            <div class="from__item">
+                                <label class="from__label-inner" for="type">Type</label>
+                                <select class="option-list req" id="type" name="type">
+                                    <option>Text</option>
+                                    <option>Audio</option>
+
+                                </select>
+                            </div>
+
+                            <div class="radio-box">
+                                <div>
+                                    <input type="radio" name="free" value="Free Book" class="free-book" checked>Free Book</div>
+                                <div>
+                                    <input type="radio" name="free" value="Paid Book" class="paid-book">Paid Book</div>
+                            </div>
+                        </div>
+
+                        <div class="perview-box" id="image-preview">
+                            <img src="#" alt="preview photo" class="prev-image" />
+                        </div>
+                    </div>
+
+                    <div class="upload-box">
+                        <div class="upload-title">
+                            <div class="caption">Upload Cover</div>
+                            <div class="caption-next">Max size 500KB</div>
+                        </div>
+                        <label for="image-upload" id="image-label"></label>
+                        <input type="file" name="cover" class="show-file req" id="image-upload" accept=".png, .jpg, .jpeg" onchange="checkPhoto(this.files[0])"
+                            required></input>
+                        <button class="upload-button preview-btn">Browse</button>
+                    </div>
+
+                    <div class="upload-box">
+                        <div class="upload-title">Upload Book</div>
+                        <button class="upload-button book-btn">Browse</button>
+                        <input type="file" name="book" class="upload-book req" accept=".doc, .docx,.ppt, .pptx,.txt,.pdf, audio/*" onchange="checkBook(this.files[0])"
+                            required></input>
+                    </div>
+
+                    <div class="hr-line"></div>
+
+                    <div class="from__item margin">
+                        <label class="from__label" for="price">Price</label>
+                        <input type="text" name="price" class="price-option" id="price" placeholder="Euros" disabled>
+                    </div>
+
+                    <div class="from__item">
+                        <label class="from__label" for="publish">Published</label>
+                        <input type="text" name="published" class="published-option req" id="publish" placeholder="Euros">
+                    </div>
+
+
+                    <label class="description" for="description">Description</label>
+                    <div class="description__box">
+                        <textarea style=margin-left:146px;margin-top:-34px; name="description" class="description__area" id="description" rows="15"></textarea>
+                    </div>
+
+                    <div class="save-btn">
+                        <button type="submit" class="upload-button">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="imagePreview.js"></script>
+    <script src="add-book.js"></script>
+    <script>
+        function checkPhoto(target) {   
+            if (target.value === "") {
+                swal("Something went wrong. Please try again!");
+            }
+
+            console.log('its targert', target);
+            $('.preview-btn').text(target.name);
+
+            $("prev-image").addClass('prev-image-show');
+        };
+
+        function checkBook(target) {   
+            if (target.value === "") {
+                swal("Something went wrong. Please try again!");
+            }
+
+            console.log('its targert', target);
+            $('.book-btn').text(target.name);
+        }
+
+
+
+        $.uploadPreview({
+            input_field: "#image-upload",  
+            preview_box: "#image-preview",  
+            label_field: "#image-label",   
+            label_default: "Choose File",   
+            label_selected: "Change File",  
+            no_label: false                
+        });
+
+    </script>
+</body>
+
+</html>

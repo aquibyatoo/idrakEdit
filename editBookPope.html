@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit {book.title}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+
+    <script src="/semantic/dist/semantic.js"></script>
+
+
+</head>
+<body style="background-color: white">
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="/js/plugins.js"></script>
+
+
+
+<div class="ui container" style="display: flex">
+
+    {>"partials/sidebar" /}
+
+    <div class="maindiv" style="flex: .8;justify-content: flex-end">
+        <div style="display: flex;
+    justify-content: space-between;align-items: center;padding:50px">
+            <div style="vertical-align: top; width:200px;height: 26px;font-size: 20px">Add New Book</div>
+            <div ><img src="/img/Idrak_logo.png" height="60" width="60" ></div>
+
+        </div>
+
+        <div style="display: flex" >
+            <div style="flex:.15;"></div>
+
+
+<form action="/admin/edit" method="post" enctype="multipart/form-data" id="editForm" name="myForm" class="ui form" style="flex: .85" >
+    {#book}
+    <input hidden value="{_id}" placeholder="Book ID" type="text" name="id" id="id" style="height: 15px;width: 500px"/>
+    <input hidden value="{bookPath}" placeholder="BookPath" type="text" name="bookPath" id="bookPath" style="height: 15px;width: 500px"/>
+    <input hidden value="{coverPath}" placeholder="CoverPath" type="text" name="coverPath" id="coverPath" style="height: 15px;width: 500px"/>
+        <table class="table">
+            <tr>
+                <td>
+                    <div class="field label">
+                        <label>Title:</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="field ">
+                        <input type="text" value="{title}" placeholder="Book Title" type="text" name="title" id="TextbxTitle" style="height: 15px;width: 500px"/>
+                    </div>
+                    <div id="TitleContainer" class="error"></div>
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    <div class="field label">
+                        <label>Author</label>
+                    </div>
+
+
+                </td>
+                <td>
+                    <div class="field ">
+                        <input type="text" name="author" id="TextbxAuthor" style="height: 15px;width:500px"  value="{author}">
+
+                    </div>
+                    <div id="AuthorContainer" class="error"></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="field label">
+                        <label>Edition</label>
+                    </div>
+
+
+                </td>
+                <td>
+                    <div class="field ">
+                        <input type="text" name="edition" value="{edition}" id="TextbxEdition" style="height: 15px;width: 500px">
+                    </div>
+                    <div id="EditionContainer" class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <div class="field label">
+                        <label>Published</label>
+                    </div>
+
+                </td>
+                <td>
+                    <div class="field ">
+                        <input type="date" name="published" value="{published}" id="TextbxPublished" style="height: 15px;width: 500px">
+
+                    </div>
+                    <div id="PublishedContainer" class="error"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="field label">
+                        <label>Language</label>
+                    </div>
+
+                </td>
+                <td>
+
+                    <select id="language" name="language" class="ui search dropdown" style="width: 200px;height: 30px">
+                        {#languages}
+                        <option value="{id}" {@eq key=id value="{book.language}"}selected{/eq}>{name}</option>
+                        {/languages}
+                    </select>
+                    <div id="LanguageContainer" class="error"></div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="field label">
+                        <label>Category</label>
+                    </div>
+                </td>
+                <td>
+                    <select id="category" name="category" class="ui search dropdown" style="width: 100px;height: 30px">
+                        {#categories}
+
+                            <option value="{id}" {@eq key=id value="{book.category}"}selected{/eq}>{title}</option>
+                        {/categories}
+                    </select>
+                    <div id="CategoryContainer" class="error"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="field label">
+                        <label>Upload Book</label>
+                        <input type="file" name="book"/>
+                    </div>
+
+                </td>
+
+                <td>
+                    <div>
+
+                        <label id="label-book" for="book">Choose Image</label>
+                        <input type="file" name="cover" id="book" class="inputfile"/>
+                        <div id="BookContainer" class="error"></div>
+
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="field label">
+                        <label>Upload Cover</label>
+                    </div>
+                </td>
+                <td>
+                    <!--<input type="file" name="upload" id="cvrupld" style="height: 25px;font-size: 12px;padding: 2px">-->
+
+                    <input type="file" id="cover" name="cover" class="inputfile" />
+                    <label id="label-cover" for="cover" >Choose a file</label>
+                    <div id="CoverContainer" class="error"></div>
+
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td><td style="text-align: right"> <input type="submit" id="SubmitButton"  class="ui button" style=" background-color: lightskyblue;font-weight: bold;color: white;padding: 5px;" value="Submit"/>
+
+            </tr>
+        </table>
+
+    {/book}
+</form>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+<script>
+    var inputs = document.getElementsByClassName( 'inputfile' );
+    Array.prototype.forEach.call( inputs, function( input ) {
+
+        input.addEventListener('change', function( e ) {
+            console.log(e);
+            var label = document.getElementById("label-" + e.target.id);
+            label.innerText = e.target.files[0].name
+        });
+    });
+</script>
+<!--<script src="/js/index.js"></script>-->
+
+
+</html>

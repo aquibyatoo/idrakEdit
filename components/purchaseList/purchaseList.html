@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../../css/style.scss">
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="side-nav-wrapper">
+            <div class="logo-box">
+                <img src="../../img/logo.png" alt="logo image" class="logo-image">
+            </div>
+            <div class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Books</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Add new books</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">Categories</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">add new category</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="" class="nav__link">types</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">add new type</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">orders</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link">log out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-main">
+            <header class="header">
+                <div class="header__caption">Order List</div>
+            </header>
+
+            <div class="table-wrapper">
+                <table id="table-order-list" class="display" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Book title</th>
+                            <th>Price</th>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Store</th>
+                            <th>Amount received</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.js"></script>
+
+    <!-- <script src="#"></script> -->
+
+    <script>
+        $(document).ready(function() {
+            let table = $('#table-order-list').DataTable( {
+                 data: [],
+                 columns: [
+                     { data: "createdAt" },
+                     { data: "title" },
+                     { data: "bookPrice" },
+                     { data: "name" },
+                     { data: "email" },
+                     { data: "store" },
+                     { data: "paymentReceived" } 
+                    ]
+             } );
+         
+             // axios call.....
+             //offset = 0;
+             let fetchData = function(offset) {
+                 console.log("keak aasun ")
+                 axios.get('http://192.168.43.38:3000/admin' + '/purchases/all')
+                         .then(function (response) {
+                             data = response.data.purchases;
+                             
+                             console.log("jason data.....",data);
+                             
+                             table.rows.add(data).draw();
+         
+                             if (data.length === 30) {
+                                 setTimeout(function () {
+                                     fetchData(offset + 1);
+                                 }, 5000);
+                             }
+                         
+                         })
+                         .catch(function (error) {
+                             console.log("Error",error);
+                         });
+             }
+         
+             fetchData(0);
+         } );
+    </script>
+</body>
+
+</html>
