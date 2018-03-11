@@ -1,5 +1,5 @@
 // THIS CODE OS FOR BOOK LIST PAGE.........
- 
+
 $(document).ready(function() {
    let table = $('#table-book-list').DataTable( {
         data: [],
@@ -22,7 +22,7 @@ $(document).ready(function() {
     //offset = 0;
     let fetchData = function(offset) {
         console.log("keak aasun ")
-        axios.get('http://localhost:3000/admin' + '/booklist?offset=' + offset)
+        axios.get('/admin' + '/booklist?offset=' + offset)
                 .then(function (response) {
                     data = response.data.data;
                     //let dataArr = JSON.stringify(data);
@@ -35,7 +35,7 @@ $(document).ready(function() {
                             fetchData(offset + 1);
                         }, 5000);
                     }
-                
+
                 })
                 .catch(function (error) {
                     console.log("Error");
@@ -44,5 +44,3 @@ $(document).ready(function() {
 
     fetchData(0);
 } );
-    
-

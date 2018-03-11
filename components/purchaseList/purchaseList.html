@@ -68,7 +68,7 @@
                     </thead>
                 </table>
             </div>
-            
+
         </div>
     </div>
 
@@ -95,34 +95,34 @@
                      { data: "name" },
                      { data: "email" },
                      { data: "store" },
-                     { data: "paymentReceived" } 
+                     { data: "paymentReceived" }
                     ]
              } );
-         
+
              // axios call.....
              //offset = 0;
              let fetchData = function(offset) {
                  console.log("keak aasun ")
-                 axios.get('http://192.168.43.38:3000/admin' + '/purchases/all')
+                 axios.get('/admin' + '/purchases/all')
                          .then(function (response) {
                              data = response.data.purchases;
-                             
+
                              console.log("jason data.....",data);
-                             
+
                              table.rows.add(data).draw();
-         
+
                              if (data.length === 30) {
                                  setTimeout(function () {
                                      fetchData(offset + 1);
                                  }, 5000);
                              }
-                         
+
                          })
                          .catch(function (error) {
                              console.log("Error",error);
                          });
              }
-         
+
              fetchData(0);
          } );
     </script>

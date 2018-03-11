@@ -1,5 +1,5 @@
 // THIS CODE IS FOR ADD NEW CATEGORY PAGE.........
- 
+
 $(document).ready(function() {
     let table = $('#type-table').DataTable( {
         data: [],
@@ -18,8 +18,8 @@ $(document).ready(function() {
     // axios call.....
     //offset = 0;
     let fetchData = function(offset) {
-        
-        axios.get('http://localhost:3000/admin' + '/booklist?offset=' + offset)
+
+        axios.get('/admin' + '/booklist?offset=' + offset)
                 .then(function (response) {
                     data = response.data.data;
                     //let dataArr = JSON.stringify(data);
@@ -32,7 +32,7 @@ $(document).ready(function() {
                             fetchData(offset + 1);
                         }, 5000);
                     }
-                
+
                 })
                 .catch(function (error) {
                     console.log("Error");
