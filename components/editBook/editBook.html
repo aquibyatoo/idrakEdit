@@ -21,30 +21,21 @@
             </div>
             <div class="nav">
                 <ul class="nav__list disable-cursor">
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Books</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">Add new books</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Categories</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">add new category</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">types</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">add new type</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="" class="nav__link">Purchases</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">log out</a>
-                    </li>
+                  <li class="nav__item">
+                      <a href="/admin" class="nav__link">Books</a>
+                  </li>
+                  <li class="nav__item">
+                      <a href="/admin/create" class="nav__link">Add new books</a>
+                  </li>
+                  <li class="nav__item">
+                      <a href="/admin/categories" class="nav__link">Categories</a>
+                  </li>
+                  <li class="nav__item">
+                      <a href="/admin/purchases" class="nav__link">Purchases</a>
+                  </li>
+                  <li class="nav__item">
+                      <a href="/login/logout" class="nav__link">log out</a>
+                  </li>
                 </ul>
             </div>
         </div>
@@ -148,7 +139,7 @@
 
                           <label class="description" for="description">Description</label>
                           <div class="description__box">
-                              <textarea value="{description}" style="margin-left:146px;margin-top:-34px;" name="description" class="description__area" id="description" rows="15"></textarea>
+                              <textarea style="margin-left:146px;margin-top:-34px;" name="description" class="description__area" id="description" rows="15">{description}</textarea>
                           </div>
 
                           <div class="save-btn">
